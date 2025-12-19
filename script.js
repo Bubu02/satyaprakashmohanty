@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const filterValue = button.getAttribute('data-filter');
 
             projectItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                const categories = item.getAttribute('data-category').split(' ');
+                if (filterValue === 'all' || categories.includes(filterValue)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
