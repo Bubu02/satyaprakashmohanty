@@ -748,3 +748,57 @@ section {
 .overall-skill-box {
     min-height: 340px;
 }
+
+/* Override for smaller/narrower skills boxes */
+.overall-skill-box {
+    padding: 20px;
+    padding-top: 45px;
+    margin-top: 45px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    /* min-height already appended */
+}
+
+.overall-skill-box .icon {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    /* border-radius for slight rounding if clip-path allows or if we remove clip-path */
+    /* keeping clip-path for now as strict hexagon requires it, but size is reduced */
+}
+
+
+/* --- FINAL STYLING UPDATES --- */
+
+/* 1. Background Blur for Hero Image */
+.hero-item .overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.4); 
+}
+
+/* 2. Narrower Skills Boxes (250px) */
+.overall-skill-box {
+    max-width: 250px !important;
+}
+
+/* 3. Rounded Hexagon Icons using Mask */
+.overall-skill-box .icon {
+    clip-path: none !important;
+    border-radius: 0 !important;
+    
+    /* Rounded Hexagon SVG Mask */
+   -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 2.5 L93 27 C96 29 97.5 31.5 97.5 35 L97.5 65 C97.5 68.5 96 71 93 73 L50 97.5 C48 98.6 46 98.6 44 97.5 L7 73 C4 71 2.5 68.5 2.5 65 L2.5 35 C2.5 31.5 4 29 7 27 L50 2.5 C52 1.4 54 1.4 56 2.5 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 2.5 L93 27 C96 29 97.5 31.5 97.5 35 L97.5 65 C97.5 68.5 96 71 93 73 L50 97.5 C48 98.6 46 98.6 44 97.5 L7 73 C4 71 2.5 68.5 2.5 65 L2.5 35 C2.5 31.5 4 29 7 27 L50 2.5 C52 1.4 54 1.4 56 2.5 Z' fill='black'/%3E%3C/svg%3E");
+    
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    
+    /* Ensure background color from specific classes shows through the mask */
+    background-color: currentColor; 
+}
